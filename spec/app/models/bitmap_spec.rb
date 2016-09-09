@@ -8,15 +8,39 @@ RSpec.describe Bitmap do
     end
 
     it 'returns a 2x2 matrix' do
-      m = Bitmap.new(2,2)
-      expect(m.matrix).to contain_exactly(%w(O O),
-                                          %w(O O))
+      bitmap = Bitmap.new(2,2)
+      expect(bitmap.matrix).to contain_exactly(%w(O O),
+                                               %w(O O))
     end
 
     it 'returns a 2x3 matrix' do
-      m = Bitmap.new(2, 3)
-      expect(m.matrix).to contain_exactly(%w(O O O),
-                                          %w(O O O))
+      bitmap = Bitmap.new(2, 3)
+      expect(bitmap.matrix).to contain_exactly(%w(O O O),
+                                               %w(O O O))
+    end
+  end
+
+  context '.clear' do 
+    before :each do 
+      @bitmap =  Bitmap.new(2,3) 
+    end
+
+    it 'clear all matrix to white(O)' do 
+      @bitmap.matrix[0][1]='A'
+      @bitmap.clear
+      expect(@bitmap.matrix.flatten.uniq).to eq ['O']
+    end
+
+    it 'clear first value' do
+      @bitmap.matrix[0][0]='A'
+      @bitmap.clear
+      expect(@bitmap.matrix.flatten.uniq).to eq ['O']
+    end
+
+    it 'clear last value' do
+      @bitmap.matrix[2][3]='A'
+      @bitmap.clear
+      expect(@bitmap.matrix.flatten.uniq).to eq ['O']
     end
   end
 end
