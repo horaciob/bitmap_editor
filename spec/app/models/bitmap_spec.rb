@@ -43,4 +43,28 @@ RSpec.describe Bitmap do
       expect(@bitmap.matrix.flatten.uniq).to eq ['O']
     end
   end
+
+  context '.change' do 
+    before :each do 
+      @bitmap =  Bitmap.new(2,3) 
+    end
+
+    it 'allows to change an element' do 
+      @bitmap.change(1,2,'A')
+      expect(@bitmap.matrix).to eq [['O','A','O'],
+                                    ['O','O','O']]
+    end
+
+    it 'allows to change first element' do
+      @bitmap.change(1,1,'A')
+      expect(@bitmap.matrix).to eq [['A','O','O'],
+                                    ['O','O','O']]
+    end
+
+    it 'allows to change last element' do 
+      @bitmap.change(2,3,'A')
+      expect(@bitmap.matrix).to eq [['O','O','O'],
+                                    ['O','O','A']]
+    end
+  end
 end
