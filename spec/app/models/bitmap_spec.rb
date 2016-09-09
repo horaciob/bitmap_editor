@@ -28,19 +28,19 @@ RSpec.describe Bitmap do
     it 'clear all matrix to white(O)' do 
       @bitmap.change(0,1,'A')
       @bitmap.clear
-      expect(@bitmap.matrix.flatten.uniq).to eq ['O']
+      expect(@bitmap.matrix.flatten.uniq).to contain_exactly 'O'
     end
 
     it 'clear first value' do
       @bitmap.change(1,1,'A')
       @bitmap.clear
-      expect(@bitmap.matrix.flatten.uniq).to eq ['O']
+      expect(@bitmap.matrix.flatten.uniq).to contain_exactly 'O'
     end
 
     it 'clear last value' do
       @bitmap.change(2,3,'A')
       @bitmap.clear
-      expect(@bitmap.matrix.flatten.uniq).to eq ['O']
+      expect(@bitmap.matrix.flatten.uniq).to contain_exactly 'O'
     end
   end
 
@@ -51,20 +51,39 @@ RSpec.describe Bitmap do
 
     it 'allows to change an element' do 
       @bitmap.change(1,2,'A')
-      expect(@bitmap.matrix).to eq [['O','A','O'],
-                                    ['O','O','O']]
+      expect(@bitmap.matrix).to contain_exactly(%w(O A O),
+                                                %w(O O O))
     end
 
     it 'allows to change first element' do
       @bitmap.change(1,1,'A')
-      expect(@bitmap.matrix).to eq [['A','O','O'],
-                                    ['O','O','O']]
+      expect(@bitmap.matrix).to contain_exactly(%w(A O O),
+                                                %w(O O O))
     end
 
     it 'allows to change last element' do 
       @bitmap.change(2,3,'A')
-      expect(@bitmap.matrix).to eq [['O','O','O'],
-                                    ['O','O','A']]
+      expect(@bitmap.matrix).to contain_exactly(%w(O O O),
+                                                %w(O O A))
+    end
+  end
+
+  context('.vertical_change') do
+    before :each do 
+      @bitmap=Bitmap.new(3,6)
+    end
+    it 'draws verticaly' do 
+      @bitmap.vertical_change(2,3,5,'C')
+      expect(@bitmap.matrix).to contain_exactly(%w(O O O O O O),
+                                                %w(O O C C C O),
+                                                %w(O O O O O O))
+    end
+
+    it 'draws verticaly if init and finish are changed' do 
+      @bitmap.vertical_change(2,5,3,'C')
+      expect(@bitmap.matrix).to contain_exactly(%w(O O O O O O),
+                                                %w(O O C C C O),
+                                                %w(O O O O O O))
     end
   end
 end
