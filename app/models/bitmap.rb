@@ -26,7 +26,7 @@ class Bitmap
     @matrix[row][column] = value
   end
 
-  def vertical_change(row, from, to, value)
+  def horizontal_change(row, from, to, value)
     row -= 1
     r = range(from, to)
     @matrix[row].fill(value, r)
