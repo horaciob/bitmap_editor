@@ -26,19 +26,19 @@ RSpec.describe Bitmap do
     end
 
     it 'clear all matrix to white(O)' do 
-      @bitmap.matrix[0][1]='A'
+      @bitmap.change(0,1,'A')
       @bitmap.clear
       expect(@bitmap.matrix.flatten.uniq).to eq ['O']
     end
 
     it 'clear first value' do
-      @bitmap.matrix[0][0]='A'
+      @bitmap.change(1,1,'A')
       @bitmap.clear
       expect(@bitmap.matrix.flatten.uniq).to eq ['O']
     end
 
     it 'clear last value' do
-      @bitmap.matrix[2][3]='A'
+      @bitmap.change(2,3,'A')
       @bitmap.clear
       expect(@bitmap.matrix.flatten.uniq).to eq ['O']
     end

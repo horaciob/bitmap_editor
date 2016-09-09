@@ -2,7 +2,7 @@
 
 # Bitmap model
 class Bitmap
-  attr_accessor :matrix
+  attr_reader :matrix, :rows, :columns
   def initialize(rows, columns)
     @rows = rows.to_i
     @columns = columns.to_i
