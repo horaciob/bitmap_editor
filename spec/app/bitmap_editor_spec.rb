@@ -7,6 +7,7 @@ RSpec.describe BitmapEditor do
 
   context '.exit_console' do
     it 'set running to false' do
+      allow($stdout).to receive(:write) 
       console.send(:exit_console)
       expect(console.instance_eval { @running }).to be false
     end
@@ -14,7 +15,6 @@ RSpec.describe BitmapEditor do
 
   context '.run' do
     it 'runs exit command' do
-      
       allow($stdout).to receive(:write) # this avoid to show sdout message while rspec runs
       allow(Readline).to receive(:readline) { 'X' }
       console.run
