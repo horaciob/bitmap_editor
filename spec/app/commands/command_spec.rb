@@ -8,13 +8,13 @@ RSpec.describe Command do
   
   context '.validations' do 
     it 'raise NotImplementedError if validations are not implemented' do 
-      expect{ DummyCommand.new.validate}.to raise_error NotImplementedError
+      expect{ DummyCommand.new.validate(nil,nil) }.to raise_error NotImplementedError
     end
   end
 
   context '.run' do 
     it 'raise NotImplementedError if run is not implemented' do 
-      expect{ DummyCommand.new.run}.to raise_error NotImplementedError
+      expect{ DummyCommand.new.run(nil,nil)}.to raise_error NotImplementedError
     end
   end
 
@@ -23,7 +23,7 @@ RSpec.describe Command do
       dummy = DummyCommand.new
       allow(dummy).to receive(:validate).once
       allow(dummy).to receive(:run).once
-      dummy.execute('')
+      dummy.execute(nil,nil)
     end
   end
 end

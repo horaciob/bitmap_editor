@@ -23,9 +23,13 @@ class BitmapEditor
         when 'X'
           exit_console
         when 'I'
-          current_bitmap = CreateCommand.new.execute(input)
+          current_bitmap = CreateCommand.new.execute(nil,input)
         when 'S'
-          ShowCommand.new.execute(current_bitmap)
+          ShowCommand.new.execute(current_bitmap,nil)
+        when 'C'
+          ClearCommand.new.execute(current_bitmap,nil)
+        when 'L'
+          ChangeCommand.new.execute(current_bitmap, input)
         else
           puts 'unrecognised command :('
         end
