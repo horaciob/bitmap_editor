@@ -32,14 +32,24 @@ class Bitmap
     @matrix[row].fill(value, r)
   end
 
-  def range(first, second)
-    first -= 1
-    second -= 1
-    if first > second
-      aux = first
-      first = second
-      second = aux
+  def vertical_change(col, from, to, value)
+    col -= 1
+    rows = *range(from, to)
+    rows.each do |row|
+      @matrix[row][col] = value
     end
-    first..second
+  end
+
+  private
+
+  def range(from, to)
+    from -= 1
+    to -= 1
+    if from > to
+      aux = from
+      from = to
+      to = aux
+    end
+    from..to
   end
 end
