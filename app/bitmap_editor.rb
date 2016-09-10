@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'bundler'
+require 'readline'
 Bundler.require :default
 require_relative 'commands/command.rb'
 require_all 'app/models'
@@ -14,8 +15,8 @@ class BitmapEditor
 
     while @running
       begin
-        print Rainbow('> ').aqua
-        input = gets.chomp
+        input = Readline::readline(Rainbow('> ').aqua)
+        Readline::HISTORY.push(input)
         input.strip!
         case input[0]
         when '?'
