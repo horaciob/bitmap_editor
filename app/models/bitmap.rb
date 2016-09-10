@@ -48,6 +48,10 @@ class Bitmap
     (1..@rows).cover?(row) && (1..@columns).cover?(col)
   end
 
+  def valid_color?(color)
+    !!/^[a-zA-Z]$/.match(color)
+  end
+
   private
 
   def range(from, to)

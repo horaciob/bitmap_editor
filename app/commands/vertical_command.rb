@@ -8,6 +8,7 @@ class VerticalCommand < Command
     raise ValidationError, 'Arg X is invalid' unless bitmap.valid_index?(1, args[1])
     raise ValidationError, 'Arg Y1 is invalid' unless bitmap.valid_index?(args[2])
     raise ValidationError, 'Arg Y2 is invalid' unless bitmap.valid_index?(args[3])
+    raise ValidationError, 'Color is not valid' unless bitmap.valid_color?(args[4])
   end
 
   def run(bitmap, *args)

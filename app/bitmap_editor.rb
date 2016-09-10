@@ -15,7 +15,7 @@ class BitmapEditor
 
     while @running
       begin
-        input = Readline::readline(Rainbow('> ').aqua)
+        input = Readline.readline(Rainbow('> ').aqua)
         Readline::HISTORY.push(input)
         input.strip!
         case input[0]

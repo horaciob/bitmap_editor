@@ -8,6 +8,7 @@ class HorizontalCommand < Command
     raise ValidationError, 'Arg X1 is invalid' unless bitmap.valid_index?(1, args[1])
     raise ValidationError, 'Arg X2 is invalid' unless bitmap.valid_index?(1, args[2])
     raise ValidationError, 'Arg Y is invalid' unless bitmap.valid_index?(args[3])
+    raise ValidationError, 'Color is not valid' unless bitmap.valid_color?(args[4])
   end
 
   def run(bitmap, *args)
