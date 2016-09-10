@@ -15,9 +15,9 @@ class BitmapEditor
 
     while @running
       begin
-        input = Readline.readline(Rainbow('> ').aqua)
-        Readline::HISTORY.push(input)
-        input.strip!
+        user_input = Readline.readline(Rainbow('> ').aqua)
+        Readline::HISTORY.push(user_input)
+        input = user_input.strip
         case input[0]
         when '?'
           show_help
