@@ -9,12 +9,12 @@ require_all 'app/commands'
 class BitmapEditor
   def run
     @running = true
-    puts 'type ? for help'
+    puts "#{Rainbow('type').yellow} ? #{Rainbow('for help').yellow}"
     current_bitmap = nil
 
     while @running
       begin
-        print '> '
+        print Rainbow('> ').aqua
         input = gets.chomp
         input.strip!
         case input[0]
@@ -35,10 +35,10 @@ class BitmapEditor
         when 'V'
           VerticalCommand.new.execute(current_bitmap, input)
         else
-          puts 'unrecognised command :('
+          puts "#{Rainbow('unrecognised command').red} :("
         end
       rescue ValidationError => e
-        puts e.message
+        puts Rainbow(e.message).red
       end
     end
   end
