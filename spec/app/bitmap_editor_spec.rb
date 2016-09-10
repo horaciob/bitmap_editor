@@ -69,13 +69,16 @@ RSpec.describe BitmapEditor do
     end
 
     it 'show help' do
+      allow($stdout).to receive(:write) 
       allow(Readline).to receive(:readline).and_return('?', 'X')
       expect { console.run }.to output(/\? - Help/).to_stdout
     end
 
     it 'show validations errors' do
+      allow($stdout).to receive(:write) 
+      allow(HorizontalCommand).to receive(:new).and_raise(ValidationError,'Ops an error!')
       allow(Readline).to receive(:readline).and_return('H 10 10 10 10', 'X')
-      expect { console.run }.to output(/You have to create a new bitmap first/).to_stdout
+      expect { console.run }.to output(/Ops an error!/).to_stdout
     end
   end
 end
