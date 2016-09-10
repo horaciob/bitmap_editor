@@ -3,7 +3,7 @@
 # Create Matrix command
 class ChangeCommand < Command
   def validate(bitmap, args)
-    raise ValidationError, 'Please check your arguments' if args.size != 4 
+    raise ValidationError, 'Please check your arguments' if args.size != 4
     raise ValidationError, 'You have to create a new bitmap first' if bitmap.nil?
     raise ValidationError, 'Wrong index for current bitmap' unless bitmap.valid_index?(args[1], args[2])
   end

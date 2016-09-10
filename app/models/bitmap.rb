@@ -38,14 +38,14 @@ class Bitmap
     end
   end
 
-  def valid_index?(row, col=1)
+  def valid_index?(row, col = 1)
     begin
-      row = Integer(row) 
+      row = Integer(row)
       col = Integer(col)
     rescue ArgumentError
       return false
     end
-    (1..@rows).include?(row) && (1..@columns).include?(col)
+    (1..@rows).cover?(row) && (1..@columns).cover?(col)
   end
 
   private

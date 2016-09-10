@@ -7,7 +7,6 @@ class CreateCommand < Command
     begin
       Integer(args[1])
       Integer(args[2])
-
     rescue ArgumentError
       raise ValidationError, 'rows and columns must be a number'
     end
