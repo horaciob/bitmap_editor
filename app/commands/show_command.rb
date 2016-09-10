@@ -3,7 +3,7 @@
 # show command
 class ShowCommand < Command
   def validate(bitmap, _args)
-    raise ValidationError, 'You have to create a new Image with command I' if bitmap.nil?
+    raise ValidationError, 'You have to create a new Image with command I' unless bitmap
   end
 
   def run(bitmap, _args)
