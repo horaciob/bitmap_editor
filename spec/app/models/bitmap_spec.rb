@@ -15,8 +15,9 @@ RSpec.describe Bitmap do
 
     it 'returns a 2x3 matrix' do
       bitmap = Bitmap.new(2, 3)
-      expect(bitmap.matrix).to contain_exactly(%w(O O O),
-                                               %w(O O O))
+      expect(bitmap.matrix).to contain_exactly(%w(O O ),
+                                               %w(O O ),
+                                               %w(O O))
     end
   end
 
@@ -51,36 +52,39 @@ RSpec.describe Bitmap do
 
     it 'allows to change an element' do 
       @bitmap.change(1,2,'A')
-      expect(@bitmap.matrix).to contain_exactly(%w(O A O),
-                                                %w(O O O))
+      expect(@bitmap.matrix).to contain_exactly(%w(O A ),
+                                                %w(O O ),
+                                                %w(O O))
     end
 
     it 'allows to change first element' do
       @bitmap.change(1,1,'A')
-      expect(@bitmap.matrix).to contain_exactly(%w(A O O),
-                                                %w(O O O))
+      expect(@bitmap.matrix).to contain_exactly(%w(A O ),
+                                                %w(O O ),
+                                                %w(O O ))
     end
 
     it 'allows to change last element' do 
-      @bitmap.change(2,3,'A')
-      expect(@bitmap.matrix).to contain_exactly(%w(O O O),
-                                                %w(O O A))
+      @bitmap.change(3,2,'A')
+      expect(@bitmap.matrix).to contain_exactly(%w(O O ),
+                                                %w(O O ),
+                                                %w(O A ))
     end
   end
 
   context('.horizontal_change') do
     before :each do 
-      @bitmap=Bitmap.new(3,6)
+      @bitmap=Bitmap.new(6,3)
     end
     it 'draws horizontal' do 
-      @bitmap.horizontal_change(2,3,5,'C')
+      @bitmap.horizontal_change(3,5,2,'C')
       expect(@bitmap.matrix).to contain_exactly(%w(O O O O O O),
                                                 %w(O O C C C O),
                                                 %w(O O O O O O))
     end
 
     it 'draws horizontal if init and finish are changed' do 
-      @bitmap.horizontal_change(2,5,3,'C')
+      @bitmap.horizontal_change(5,3,2,'C')
       expect(@bitmap.matrix).to contain_exactly(%w(O O O O O O),
                                                 %w(O O C C C O),
                                                 %w(O O O O O O))
@@ -88,7 +92,7 @@ RSpec.describe Bitmap do
   end
   context('.vertical_change') do
     before :each do 
-      @bitmap = Bitmap.new(6,3)
+      @bitmap = Bitmap.new(3,6)
     end
 
     it 'draws vertical' do 
