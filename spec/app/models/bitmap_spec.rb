@@ -52,8 +52,8 @@ RSpec.describe Bitmap do
 
     it 'allows to change an element' do 
       @bitmap.change(1,2,'A')
-      expect(@bitmap.matrix).to contain_exactly(%w(O A ),
-                                                %w(O O ),
+      expect(@bitmap.matrix).to contain_exactly(%w(O O ),
+                                                %w(A O ),
                                                 %w(O O))
     end
 
@@ -65,7 +65,7 @@ RSpec.describe Bitmap do
     end
 
     it 'allows to change last element' do 
-      @bitmap.change(3,2,'A')
+      @bitmap.change(2,3,'A')
       expect(@bitmap.matrix).to contain_exactly(%w(O O ),
                                                 %w(O O ),
                                                 %w(O A ))

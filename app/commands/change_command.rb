@@ -2,7 +2,7 @@
 
 # Create Matrix command
 class ChangeCommand < Command
-  def validate(current_bitmap, args)
+  def validate(current_bitmap, _args)
     raise ValidationError, 'You have to create a new bitmap first' if current_bitmap.nil?
   end
 
@@ -10,4 +10,3 @@ class ChangeCommand < Command
     bitmap.change(*args[1..-1])
   end
 end
-

@@ -2,7 +2,7 @@
 
 # Create Matrix command
 class VerticalCommand < Command
-  def validate(bitmap, args)
+  def validate(bitmap, _args)
     raise ValidationError, 'You have to create a new bitmap first' if bitmap.nil?
   end
 
@@ -10,4 +10,3 @@ class VerticalCommand < Command
     bitmap.vertical_change(*args[1..-1])
   end
 end
-

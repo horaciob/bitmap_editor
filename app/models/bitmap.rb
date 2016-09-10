@@ -3,7 +3,7 @@
 # Bitmap model
 class Bitmap
   attr_reader :matrix, :rows, :columns
-  def initialize(columns,rows)
+  def initialize(columns, rows)
     @rows = rows.to_i
     @columns = columns.to_i
     @matrix = []
@@ -18,13 +18,13 @@ class Bitmap
     end
   end
 
-  def change(row, column, value)
+  def change(column, row, value)
     row = row.to_i - 1
     column = column.to_i - 1
     @matrix[row][column] = value
   end
 
-  def horizontal_change(from, to,row, value)
+  def horizontal_change(from, to, row, value)
     row = row.to_i - 1
     r = range(from, to)
     @matrix[row].fill(value, r)

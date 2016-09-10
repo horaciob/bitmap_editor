@@ -2,11 +2,11 @@
 
 # show command
 class ShowCommand < Command
-  def validate(bitmap)
+  def validate(bitmap, _args)
     raise ValidationError, 'You have to create a new Image with command I' if bitmap.nil?
   end
 
-  def run(bitmap)
+  def run(bitmap, _args)
     bitmap.matrix.each do |row|
       row.each do |col|
         print col.to_s
