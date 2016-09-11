@@ -25,4 +25,11 @@ RSpec.describe ShowCommand do
       expect { described_class.new.run(bitmap, 'S') }.to output("OOO\nOOO\n").to_stdout
     end
   end
+  
+  context '.execute' do
+    it 'run even when more args are passed' do 
+      bitmap = Bitmap.new(1, 2)
+      expect { described_class.new.execute(bitmap, 'S F A K E') }.to output("O\nO\n").to_stdout
+    end
+  end
 end
