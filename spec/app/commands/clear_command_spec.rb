@@ -5,13 +5,13 @@ RSpec.describe ClearCommand do
   context '.execute' do
     it 'clear Bitmap' do
       bitmap = Bitmap.new(2, 2)
-      allow(bitmap).to receive(:clear).once
+      expect(bitmap).to receive(:clear).once
       described_class.new.execute(bitmap, 'C')
     end
 
     it 'clear Bitmap even if more args are passed' do
       bitmap = Bitmap.new(2, 2)
-      allow(bitmap).to receive(:clear).once
+      expect(bitmap).to receive(:clear).once
       described_class.new.execute(bitmap, 'C F A K E')
     end
   end

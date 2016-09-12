@@ -19,10 +19,10 @@ RSpec.describe Command do
   end
 
   context '.execute' do
-    it 'call validations' do
+    it 'call validations and run' do
       dummy = DummyCommand.new
-      allow(dummy).to receive(:validate).once
-      allow(dummy).to receive(:run).once
+      expect(dummy).to receive(:validate).once
+      expect(dummy).to receive(:run).once
       dummy.execute(nil, nil)
     end
   end
