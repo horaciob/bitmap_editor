@@ -16,48 +16,49 @@ RSpec.describe BitmapEditor do
     it 'runs exit command' do
       allow($stdout).to receive(:write) # this avoid to show sdout message while rspec runs
       allow(Readline).to receive(:readline) { 'X' }
+      expect(console).to receive(:exit_console).and_call_original
       console.run
     end
 
     it 'runs create command' do
       allow($stdout).to receive(:write)
-      allow(CreateCommand).to receive(:new).and_return(instance_double(CreateCommand, execute: 0))
       allow(Readline).to receive(:readline).and_return('I 2 2', 'X')
+      expect(CreateCommand).to receive(:new).and_return(instance_double(CreateCommand, execute: 0))
       console.run
     end
 
     it 'runs show command' do
       allow($stdout).to receive(:write)
-      allow(ShowCommand).to receive(:new).and_return(instance_double(ShowCommand, execute: 0))
       allow(Readline).to receive(:readline).and_return('S', 'X')
+      expect(ShowCommand).to receive(:new).and_return(instance_double(ShowCommand, execute: 0))
       console.run
     end
 
     it 'runs Clear command' do
       allow($stdout).to receive(:write)
-      allow(ClearCommand).to receive(:new).and_return(instance_double(ClearCommand, execute: 0))
       allow(Readline).to receive(:readline).and_return('C', 'X')
+      expect(ClearCommand).to receive(:new).and_return(instance_double(ClearCommand, execute: 0))
       console.run
     end
 
     it 'runs Change command' do
       allow($stdout).to receive(:write)
-      allow(ChangeCommand).to receive(:new).and_return(instance_double(ChangeCommand, execute: 0))
       allow(Readline).to receive(:readline).and_return('L 2 3 A', 'X')
+      expect(ChangeCommand).to receive(:new).and_return(instance_double(ChangeCommand, execute: 0))
       console.run
     end
 
     it 'runs Vertical command' do
       allow($stdout).to receive(:write)
-      allow(VerticalCommand).to receive(:new).and_return(instance_double(VerticalCommand, execute: 0))
       allow(Readline).to receive(:readline).and_return('V 2 3 6 W', 'X')
+      expect(VerticalCommand).to receive(:new).and_return(instance_double(VerticalCommand, execute: 0))
       console.run
     end
 
     it 'runs Horizontal Command' do
       allow($stdout).to receive(:write)
-      allow(HorizontalCommand).to receive(:new).and_return(instance_double(HorizontalCommand, execute: 0))
       allow(Readline).to receive(:readline).and_return('H 3 5 2 Z', 'X')
+      expect(HorizontalCommand).to receive(:new).and_return(instance_double(HorizontalCommand, execute: 0))
       console.run
     end
 
